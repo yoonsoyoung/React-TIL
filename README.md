@@ -1,3 +1,11 @@
+# React Today I Learned
+
+> 인프런 생활코딩 강의를 바탕으로 배우는 React
+
+수업 내용 필기 [Notion](https://succulent-geranium-dfe.notion.site/React-2de77aa6eef6414db7862b7aad6f797f)
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
