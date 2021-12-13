@@ -1,3 +1,10 @@
 .App {
   text-align: center;
 }
+.App a {
+  text-decoration: none;
+  color: inherit;
+}
+.App a:hover {
+  color: tomato;
+}
