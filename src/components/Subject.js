@@ -5,7 +5,15 @@ class Subject extends Component {
     return (
       <header>
         <h1>
-          <a href='/'>{this.props.title}</a>
+          <a
+            href='/'
+            onClick={function (e) {
+              e.preventDefault(); // 링크 클릭 시 페이지 전환 막음
+              this.props.onChangePage();
+            }.bind(this)}
+          >
+            {this.props.title}
+          </a>
         </h1>
         {this.props.sub}
       </header>
