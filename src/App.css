@@ -10,5 +10,34 @@
   color: tomato;
 }
 .App li:hover {
-  font-weight: bold;
+  font-weight: bolder;
+}
+.btn {
+  list-style: none;
+  background-color: lightgray;
+  border-radius: 50px;
+  width: 70px;
+  padding: 5px 10px;
+  text-align: center;
+  margin: 5px 0;
+}
+.btn > input[type='button'] {
+  border: none;
+  background: none;
+  font-size: 0.9em;
+}
+.btn:hover,
+.btn > input[type='button']:hover,
+.btn > a:hover {
+  color: white;
+  font-weight: bolder;
+  background-color: tomato;
+}
+input[type='text'] {
+  width: 200px;
+  height: 20px;
+}
+textarea {
+  width: 200px;
+  height: 100px;
 }
