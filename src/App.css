@@ -9,3 +9,6 @@
 .App a:hover {
   color: tomato;
 }
+.App li:hover {
+  font-weight: bold;
+}
