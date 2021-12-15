@@ -1,14 +1,17 @@
 import './App.css';
 import TOC from './components/TOC';
-import Content from './components/Content';
+import ReadContent from './components/ReadContent';
+import CreateContent from './components/CreateContent';
 import Subject from './components/Subject';
+import Control from './components/Control';
 import React, { Component } from 'react';
 
 class App extends Component {
   constructor(props) {
     super(props);
+    this.max_content_id = 3; // ui에 영향을 주지 않기 때문에 state로 하지 X
     this.state = {
-      mode: 'read',
+      mode: 'create',
       selected_content_id: 2,
       welcome: { title: 'Welcome', desc: 'Hello React!!!' },
       subject: { title: 'WEB', sub: 'World Wide Web!' },
@@ -22,10 +25,12 @@ class App extends Component {
   render() {
     console.log('App render');
     var _title,
-      _desc = null;
+      _desc,
+      _article = null;
     if (this.state.mode === 'welcome') {
       _title = this.state.welcome.title;
       _desc = this.state.welcome.desc;
+      _article = <ReadContent title={_title} desc={_desc} />;
     } else if (this.state.mode === 'read') {
       var i = 0;
       while (i < this.state.contents.length) {
@@ -37,6 +42,25 @@ class App extends Component {
         }
         i = i + 1;
       }
+      _article = <ReadContent title={_title} desc={_desc} />;
+    } else if (this.state.mode === 'create') {
+      _article = (
+        <CreateContent
+          onSubmit={function (_title, _desc) {
+            this.max_content_id++;
+            var _contents = this.state.contents.concat({
+              id: this.max_content_id,
+              title: _title,
+              desc: _desc,
+            });
+            this.setState({
+              contents: _contents,
+            });
+            console.log(_title, _desc);
+          }.bind(this)}
+        />
+      );
+    } else if (this.state.mode === 'update') {
     }
     // console.log('render', this);
     return (
@@ -54,7 +78,12 @@ class App extends Component {
             this.setState({ mode: 'read', selected_content_id: Number(id) });
           }.bind(this)}
         />
-        <Content title={_title} desc={_desc} />
+        <Control
+          onChangeMode={function (mode) {
+            this.setState({ mode: mode });
+          }.bind(this)}
+        />
+        {_article}
       </div>
     );
   }
