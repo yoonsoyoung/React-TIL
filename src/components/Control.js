@@ -3,7 +3,7 @@ class Control extends Component {
   render() {
     return (
       <ul>
-        <li class='btn'>
+        <li className='btn'>
           <a
             href='/create'
             onClick={function (e) {
@@ -14,7 +14,7 @@ class Control extends Component {
             CREATE
           </a>
         </li>
-        <li class='btn'>
+        <li className='btn'>
           <a
             href='/update'
             onClick={function (e) {
@@ -25,7 +25,7 @@ class Control extends Component {
             UPDATE
           </a>
         </li>
-        <li class='btn'>
+        <li className='btn'>
           <input
             type='button'
             value='DELETE'
