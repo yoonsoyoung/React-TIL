@@ -8,7 +8,7 @@ React 연습 리포지토리
 개발환경 설정과 App.js, 각 컴포넌트를 나누고 간단한 CRUD 기능을 구현할 수 있다.
 
 
-### react-web [📂ing]()
+### react-web [📂ing](https://github.com/yoonsoyoung/React-TIL/tree/main/react-web)
 > **React & Express** 를 이용한 웹 어플리케이션 개발 리포지토리 (w/인프런)
 
 react.js, ES6, JSX 의 특징을 배우고 Redux, Express, MongoDB, React Router 를 사용하여 주소록을 만들 수 있다.
