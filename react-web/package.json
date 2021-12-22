@@ -4,7 +4,8 @@
   "description": "> 인프런 강의를 바탕으로 배우는 React",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev-server": "webpack-dev-server"
   },
   "author": "",
   "license": "ISC",
@@ -13,12 +14,13 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
+    "@babel/core": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "@babel/preset-react": "^7.16.5",
     "babel-loader": "^8.2.3",
-    "babel-preset-latest": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
     "react-hot-loader": "^4.13.0",
     "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.7.0"
   }
 }
