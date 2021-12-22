@@ -1,5 +1,6 @@
 // webpack 을 불러옴. ES6 부터는 import 사용
-var webpack = require('webpack');
+// var webpack = require('webpack');
+import webpack from 'webpack';
 
 module.exports = {
   // entry 파일부터 시작해서 require 불러옴
