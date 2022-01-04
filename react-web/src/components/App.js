@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Contact from './Contact';
 import { hot } from 'react-hot-loader';
 
 class App extends Component {
@@ -9,18 +10,7 @@ class App extends Component {
     };
   }
   render() {
-    return (
-      <div className='App'>
-        <button
-          onClick={() => {
-            this.setState({ name: 'React' });
-          }}
-        >
-          Click
-        </button>
-        <h1>Hello :) {this.state.name}</h1>
-      </div>
-    );
+    return <Contact />;
   }
 }
 
