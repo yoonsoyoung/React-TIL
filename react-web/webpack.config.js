@@ -29,7 +29,7 @@ module.exports = {
         exclude: /node_modules/,
         options: {
           cacheDirectory: true,
-          presets: ['@babel/preset-env', 'stage-0', '@babel/preset-react'],
+          presets: ['@babel/preset-env', '@babel/preset-react'],
           plugins: ['react-hot-loader/babel'],
         },
       },
