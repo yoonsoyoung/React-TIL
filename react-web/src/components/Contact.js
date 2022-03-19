@@ -35,6 +35,10 @@ export default class Contact extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+
+    this.handleCreate = this.handleCreate.bind(this); // 데이터 추가
+    this.handleRemove = this.handleRemove.bind(this); // 데이터 제거
+    this.handleEdit = this.handleEdit.bind(this); // 데이터 변경
   }
 
   handleChange(e) {
@@ -50,6 +54,33 @@ export default class Contact extends Component {
 
     console.log(key, 'is selected');
   }
+
+  handleCreate(contact) {
+    this.setState({
+      contactData: update(this.state.contactData, { $push: [contact] }),
+    });
+  }
+
+  handleRemove() {
+    // 파라미터를 갖지 않고 selectKey를 삭제할 때 쓰임
+    this.setState({
+      contactData: update(this.state.contactData, { $splice: [[this.state.selectKey, 1]] }),
+      selectKey: -1,
+      // selectKey 를 -1로 만들어서 무효화
+    });
+  }
+
+  handleEdit(name, phone) {
+    this.setState({
+      contactData: update(this.state.contactData, {
+        [this.state.selectKey]: {
+          name: { $set: name },
+          phone: { $set: phone },
+        },
+      }),
+    });
+  }
+
   render() {
     const mapToComponents = (data) => {
       data.sort();
