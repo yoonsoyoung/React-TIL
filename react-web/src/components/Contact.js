@@ -42,6 +42,26 @@ export default class Contact extends Component {
     this.handleEdit = this.handleEdit.bind(this); // 데이터 변경
   }
 
+  // 컴포넌트가 DOM 위에 생기기 전 실행
+  componentWillMount() {
+    // 이미 존재한다면 setState를 통하여 저장된 값 불러옴
+    const contactData = localStorage.contactData;
+
+    if (contactData) {
+      this.setState({
+        contactData: JSON.parse(contactData),
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // 이전 값과 현재 값이 다르다면,
+    if (JSON.stringify(prevState.contactData) != JSON.stringify(this.state.contactData)) {
+      // 로컬스토리지에 있는 값을 현재 값으로 설정
+      localStorage.contactData = JSON.stringify(this.state.contactData);
+    }
+  }
+
   handleChange(e) {
     this.setState({
       keyword: e.target.value,
