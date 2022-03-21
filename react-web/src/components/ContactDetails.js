@@ -13,6 +13,7 @@ export default class ContactDetails extends Component {
       <div>
         <h2>Details</h2>
         {this.props.isSelected ? details : blank}
+        <button onClick={this.props.onRemove}>Remove</button>
       </div>
     );
   }
@@ -23,5 +24,9 @@ ContactDetails.defaultProps = {
   contact: {
     name: '',
     phone: '',
+  },
+  onRemove: () => {
+    // 지정되지 않았을 때 에러 반환
+    console.error('onRmove not defined');
   },
 };

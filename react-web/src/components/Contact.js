@@ -64,6 +64,12 @@ export default class Contact extends Component {
 
   handleRemove() {
     // 파라미터를 갖지 않고 selectKey를 삭제할 때 쓰임
+
+    if (this.state.selectKey < 0) {
+      // 선택하지 않았을 때 아무런 기능 X. 즉 선택된 애만 삭제하도록
+      return;
+    }
+
     this.setState({
       contactData: update(this.state.contactData, { $splice: [[this.state.selectKey, 1]] }),
       selectKey: -1,
@@ -104,6 +110,7 @@ export default class Contact extends Component {
         <ContactDetails
           isSelected={this.state.selectKey != -1}
           contact={this.state.contactData[this.state.selectKey]}
+          onRemove={this.handleRemove}
         />
         <ContactCreate onCreate={this.handleCreate} />
       </div>
