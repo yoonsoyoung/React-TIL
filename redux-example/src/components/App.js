@@ -1,13 +1,30 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Counter from './Counter';
+
+const propTypes = {
+
+};
+
+const defaultProps = {
+
+};
 
 export default class App extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div>
-        App
-        <h1>여긴 앱이다.</h1>
+        <Counter />
 
       </div>
     )
   }
 }
+
+App.propTypes = propTypes;
+App.defaultProps = defaultProps;
