@@ -12,5 +12,12 @@ React 연습 리포지토리
 > **React & Express** 를 이용한 웹 어플리케이션 개발 리포지토리 (w/인프런)
 
 react.js, ES6, JSX 의 특징을 배우고 Redux, Express, MongoDB, React Router 를 사용하여 주소록을 만들 수 있다.
+- redux-example : Redux 사용법을 익히기 위한 프로젝트
 
 
+
+
+
+
+
+---
