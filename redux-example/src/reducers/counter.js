@@ -4,12 +4,12 @@ import * as types from '../actions/ActionTypes';
 const initialState = {
     number: 0,
     dummy: 'dumbdumb',
-    dumbObject: {
-        d: 0,
-        u: 1,
-        m: 2,
-        b: 3
-    }
+    // dumbObject: {
+    //     d: 0,
+    //     u: 1,
+    //     m: 2,
+    //     b: 3
+    // }
 };
 
 export default function counter(state = initialState, action) {
@@ -23,7 +23,7 @@ switch(action.type) {
         return { 
             ...state, 
             number: state.number + 1,
-            dumbObject: {...state.dumbObject, u: 0} // u만 덮어씌우기
+            // dumbObject: {...state.dumbObject, u: 0} // u만 덮어씌우기
         }; // 기존의 값을 덮어 씌우기
     case types.DECREMENT:
         return {
