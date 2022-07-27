@@ -18,9 +18,8 @@ app.use(bodyParser.json());
 
 app.use('/user', user);
 
-app.get('/', function(req, res){
-    res.send('Hello World');
-});
+// 정적 파일 제공
+app.use('/', express.static('public'));
 
 app.listen(3000, function() {
     console.log('Express App listening on port 3000');
