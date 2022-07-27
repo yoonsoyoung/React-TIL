@@ -2,11 +2,15 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/:id', function(req, res) { // 동적인 값(:id)를 받아 
-    res.send('Received a GET request, param: ' + req.params.id);
+    res.send('Received a GET request, param > ' + req.params.id);
 });
 
 router.post('/', function(req, res) {
-    res.json({success:true}) // json 형태의 응답
+    console.log(JSON.stringify(req.body, null, 2));
+    res.json({
+        success:true,
+        user: req.body.username
+    }) // json 형태의 응답
 });
 
 router.put('/', function(req, res) {
