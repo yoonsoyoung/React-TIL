@@ -13,10 +13,10 @@ export default function Router() {
         <>
             <Routes>
                 <Route path="/" element={<Home />}/>
-                <Route path="/post" element={<PostList />}/>
-                <Route path="/post/:id" element={<PostDetail />}/>
-                <Route path="/post/new" element={<PostNew />}/>
-                <Route path="/post/edit/:id" element={<PostEdit />}/>
+                <Route path="/posts" element={<PostList />}/>
+                <Route path="/posts/:id" element={<PostDetail />}/>
+                <Route path="/posts/new" element={<PostNew />}/>
+                <Route path="/posts/edit/:id" element={<PostEdit />}/>
                 <Route path="/profile" element={<Profile />}/>
                 <Route path="/login" element={<LoginPage />}/>
                 <Route path="/signup" element={<SignupPage />}/>
