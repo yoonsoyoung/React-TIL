@@ -11,7 +11,7 @@ export default function SignupForm() {
     const [passwordConfirm, setPasswordConfirm] = useState<string>("");
 
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault(); // 체크 후 submit 해줘야 함
+        e.preventDefault(); // submit 후 새로고침 방지
         try {
             const auth = getAuth(app);
             await  createUserWithEmailAndPassword(auth, email, password);
