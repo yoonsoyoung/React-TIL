@@ -16,11 +16,11 @@ export default function PostList({ hasNavigation = true}: PostListProps) {
                     <div
                         role="presentation"
                         onClick={()=> setActiveTab("all")}
-                        className={activeTab == 'all' ? 'post__navigation--active' : ''}>전체
+                        className={activeTab === 'all' ? 'post__navigation--active' : ''}>전체
                     </div>
                     <div role="presentation"
                          onClick={()=> setActiveTab("my")}
-                         className={activeTab == 'my' ? 'post__navigation--active' : ''}>나의 글
+                         className={activeTab === 'my' ? 'post__navigation--active' : ''}>나의 글
                     </div>
                 </div>
             )}
