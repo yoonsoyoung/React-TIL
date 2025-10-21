@@ -22,7 +22,6 @@ export default function PostDetail() {
         console.log("delete");
     }
 
-    console.log(post);
     useEffect(() => {
         if(params?.id) getPost(params?.id);
     }, [params?.id]);
