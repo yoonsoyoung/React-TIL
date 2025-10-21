@@ -22,7 +22,6 @@ export default function PostDetail() {
         console.log("delete");
     }
 
-    console.log(post);
     useEffect(() => {
         if(params?.id) getPost(params?.id);
     }, [params?.id]);
@@ -31,16 +30,16 @@ export default function PostDetail() {
         <div className="post__detail">
             {post ? (
                 <div className="post__box">
-                    <div className="post__title">{post.title}</div>
+                    <div className="post__title">{post?.title}</div>
                     <div className="post__profile-box">
                         <div className="post__profile"/>
-                        <div className="post__author-name">{post.email}</div>
-                        <div className="post__date">{post.createAt}</div>
+                        <div className="post__author-name">{post?.email}</div>
+                        <div className="post__date">{post?.createAt}</div>
                     </div>
                     <div className="post__utils-box">
                         <div className="post__delete" onClick={handleDelete} >삭제</div>
                         <div className="post__edit">
-                            <Link to={`/posts/edit/${post.id}`} >수정</Link>
+                            <Link to={`/posts/edit/${post?.id}`} >수정</Link>
                         </div>
                     </div>
                     <div className="post__text post__text--pre-wrap">
