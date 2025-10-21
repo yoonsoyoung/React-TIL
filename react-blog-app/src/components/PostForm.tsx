@@ -27,7 +27,7 @@ export default function PostForm() {
                   title: title,
                   summary: summary,
                   content: content,
-                  updateAt: new Date()?.toLocaleDateString(),
+                  updateAt: new Date()?.toLocaleString(),
               });
 
               toast?.success("게시글을 수정했습니다.");
@@ -38,7 +38,7 @@ export default function PostForm() {
                   title: title,
                   summary: summary,
                   content: content,
-                  createAt: new Date()?.toLocaleDateString(),
+                  createAt: new Date()?.toLocaleString(),
                   email: user?.email,
                   uid: user?.uid,
               });
