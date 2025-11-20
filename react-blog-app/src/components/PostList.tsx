@@ -28,9 +28,10 @@ export default function PostList({ hasNavigation = true}: PostListProps) {
     const { user } = useContext(AuthContext);
 
     const getPosts = async () => {
-        const  datas = await getDocs(query(collection(db, "posts"), orderBy("createAt", "desc")));
-
         setPosts([]); // 초기화: 기존꺼 뒤에 추가되는 방식 때문에 삭제 후 목록 갱신 시 필요
+        const postRef = collection(db, "posts");
+        const postQuery = query(postRef, orderBy("createAt", "desc"))
+        const  datas = await getDocs(postQuery);
         datas?.forEach((doc) => {
             const dataObj = { ...doc.data(), id: doc.id};
             setPosts((prev) => [...prev, dataObj as PostProps]); // 기존꺼 뒤에 추가하도록
