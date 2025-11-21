@@ -1,12 +1,13 @@
 import {useContext, useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import { collection, getDocs, query, orderBy, doc, deleteDoc } from "firebase/firestore";
+import { collection, getDocs, query, orderBy, doc, deleteDoc, where } from "firebase/firestore";
 import { db } from "firebaseApp";
 import AuthContext from "../context/AuthContext";
 import {toast} from "react-toastify";
 
 interface PostListProps {
     hasNavigation?: boolean;
+    defaultTab?: TabType;
 }
 
 type TabType = "all" | "my";
@@ -22,15 +23,27 @@ export interface PostProps {
     uid: string;
 }
 
-export default function PostList({ hasNavigation = true}: PostListProps) {
+export default function PostList({
+     hasNavigation = true,
+     defaultTab = 'all',
+    }: PostListProps) {
     const [activeTab, setActiveTab] = useState<TabType>("all");
     const [posts, setPosts] = useState<any []>([]);
     const { user } = useContext(AuthContext);
 
     const getPosts = async () => {
         setPosts([]); // 초기화: 기존꺼 뒤에 추가되는 방식 때문에 삭제 후 목록 갱신 시 필요
-        const postRef = collection(db, "posts");
-        const postQuery = query(postRef, orderBy("createAt", "desc"))
+        let postRef = collection(db, "posts");
+        let postQuery;
+
+        if(activeTab === 'my' && user) {
+            // 나의 글만 필터링
+            postQuery = query(postRef, where('uid', '==', user.uid), orderBy("createAt", "desc"));
+        } else {
+            // 모든 글 보여주기
+            postQuery = query(postRef, orderBy("createAt", "desc"));
+        }
+
         const  datas = await getDocs(postQuery);
         datas?.forEach((doc) => {
             const dataObj = { ...doc.data(), id: doc.id};
@@ -50,7 +63,7 @@ export default function PostList({ hasNavigation = true}: PostListProps) {
 
     useEffect(() => {
         getPosts();
-    }, [])
+    }, [activeTab]);
 
     return (
         <>
