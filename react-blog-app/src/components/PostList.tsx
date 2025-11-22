@@ -7,10 +7,8 @@ import {toast} from "react-toastify";
 
 interface PostListProps {
     hasNavigation?: boolean;
-    defaultTab?: TabType;
+    defaultTab?: TabType | CategoryType;
 }
-
-type TabType = "all" | "my";
 
 export interface PostProps {
     id: string;
@@ -21,13 +19,18 @@ export interface PostProps {
     createAt: string;
     updateAt: string;
     uid: string;
-}
+    category?: CategoryType;
+};
+
+type TabType = "all" | "my";
+export type CategoryType = 'Frontend' | 'Backend' | 'Web' | 'Native';
+export const CATEGORIES: CategoryType[] = ['Frontend', 'Backend', 'Web', 'Native'];
 
 export default function PostList({
      hasNavigation = true,
      defaultTab = 'all',
     }: PostListProps) {
-    const [activeTab, setActiveTab] = useState<TabType>("all");
+    const [activeTab, setActiveTab] = useState<TabType | CategoryType>(defaultTab);
     const [posts, setPosts] = useState<any []>([]);
     const { user } = useContext(AuthContext);
 
@@ -39,9 +42,12 @@ export default function PostList({
         if(activeTab === 'my' && user) {
             // 나의 글만 필터링
             postQuery = query(postRef, where('uid', '==', user.uid), orderBy("createAt", "desc"));
-        } else {
+        } else if (activeTab === 'all') {
             // 모든 글 보여주기
             postQuery = query(postRef, orderBy("createAt", "desc"));
+        } else {
+            // 카테고리 글 보여주기
+            postQuery = query(postRef, where('category', '==', activeTab), orderBy("createAt", "desc"));
         }
 
         const  datas = await getDocs(postQuery);
@@ -78,6 +84,14 @@ export default function PostList({
                          onClick={()=> setActiveTab("my")}
                          className={activeTab === 'my' ? 'post__navigation--active' : ''}>나의 글
                     </div>
+                    {CATEGORIES?.map((category) => (
+                        <div role="presentation"
+                            key={category}
+                            onClick={()=> setActiveTab(category)}
+                            className={activeTab === category ? 'post__navigation--active' : ''}>
+                            {category}
+                        </div>
+                    ))}
                 </div>
             )}
             <div className="post__list">
