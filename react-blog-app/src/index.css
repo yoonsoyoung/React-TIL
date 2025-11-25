@@ -21,6 +21,13 @@ header {
   padding: 10px 40px;
   min-height: 40px;
   align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
 }
 
 header .header__logo {
@@ -61,6 +68,11 @@ footer a {
 footer a:focus,
 footer a:hover {
   color: black;
+}
+
+.footer__theme-btn {
+  cursor: pointer;
+  width: 18px;
 }
 
 /* post navigation */
@@ -256,7 +268,7 @@ footer a:hover {
 .carousel {
   margin: 0 auto;
   max-width: 980px;
-  margin-top: 36px;
+  margin-top: 60px;
 }
 
 ul.carousel__slides {
@@ -489,4 +501,57 @@ input:checked + .carousel__slide-container .nav label {
   border-radius: 50%;
   z-index: 999;
   animation: rotation 1s linear infinite;
+}
+
+
+/* dark mode */
+.white {
+  transition: all 0.25s linear;
+  background-color: white;
+}
+
+.dark {
+  transition: all 0.25s linear;
+  background-color: #1e2937;
+  min-height: 100vh;
+}
+
+.dark a,
+.dark .form label,
+.dark .form__title,
+.dark .post__delete,
+.dark .post__navigation--active,
+.dark .post__title,
+.dark .post__author-name,
+.dark .profile__logout,
+.dark .profile__name,
+.dark .footer__theme-btn
+{
+  color: white;
+}
+
+.dark a:hover,
+.dark a:focus,
+.dark .post__text,
+.dark .post__text--pre-wrap,
+.dark .post__date,
+.dark .profile__email,
+.dark .form__block
+{
+  color: lightgray;
+}
+
+.dark .form__error {
+  color: #ff6a71;
+}
+
+.dark footer,
+.dark header {
+  background-color: #111827;
+  background-color: rgba(17, 24, 39, 0.7);
+  backdrop-filter: blur(10px);
+}
+
+.dark .profile__box {
+  background-color: lightslategray;
 }
