@@ -5,49 +5,11 @@ import { db } from "firebaseApp";
 import AuthContext from "../context/AuthContext";
 import {toast} from "react-toastify";
 
-const COMMENTS = [
-    {
-        id: 1,
-        email: "test@test.com",
-        content: "댓글 입니다. 1",
-        createAt: "2025-11-29",
-    },
-    {
-        id: 2,
-        email: "test@test.com",
-        content: "댓글 입니다. 2",
-        createAt: "2025-11-29",
-    },
-    {
-        id: 3,
-        email: "test@test.com",
-        content: "댓글 입니다. 3",
-        createAt: "2025-11-29",
-    },
-    {
-        id: 4,
-        email: "test2@test.com",
-        content: "댓글 입니다. 4",
-        createAt: "2025-11-29",
-    },
-    {
-        id: 5,
-        email: "test2@test.com",
-        content: "댓글 입니다. 5",
-        createAt: "2025-11-29",
-    },
-    {
-        id: 6,
-        email: "test@test.com",
-        content: "댓글 입니다. 6",
-        createAt: "2025-11-29",
-    },
-];
-
 interface CommentsProps {
     post: PostProps;
+    getPost: (id: string) => Promise<void>;
 }
-export default function Comments({ post }: CommentsProps) {
+export default function Comments({ post, getPost }: CommentsProps) {
     const [comment, setComment] = useState("");
     const { user } = useContext(AuthContext);
 
@@ -72,7 +34,7 @@ export default function Comments({ post }: CommentsProps) {
                   const commentObj = {
                       content: comment,
                       uid: user.uid,
-                      eamil: user.email,
+                      email: user.email,
                       createAt: new Date()?.toLocaleDateString("ko", {
                           hour: "2-digit",
                           minute: "2-digit",
@@ -87,7 +49,9 @@ export default function Comments({ post }: CommentsProps) {
                           minute: "2-digit",
                           second: "2-digit",
                       }),
-                  })
+                  });
+                  // 문서 업데이트
+                  await getPost(post.id);
               }
               toast.success("댓글을 작성했습니다.");
               setComment("");
@@ -110,8 +74,8 @@ export default function Comments({ post }: CommentsProps) {
                 </div>
             </form>
             <div className="comments__list">
-                {COMMENTS?.map((comment) => { return (
-                    <div key={comment.id} className="comment__box">
+                {post?.comments?.slice(0)?.reverse().map((comment) => { return (
+                    <div key={comment.createAt} className="comment__box">
                         <div className="comment__profile-box">
                             <div className="comment__email">{comment?.email}</div>
                             <div className="comment__date">{comment?.createAt}</div>
