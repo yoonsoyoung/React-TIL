@@ -23,7 +23,7 @@ react.js, ES6, JSX 의 특징을 배우고 Redux, Express, MongoDB, React Router
 
 Class, Hooks 를 익히고, Context API와 React Router, Webpack, Babel 을 배워 웹 게임을 만들 수 있다.
 
-### react-blog-app [📂ing](https://github.com/yoonsoyoung/React-TIL/tree/main/react-blog-app)
+### react-blog-app [📂finished](https://github.com/yoonsoyoung/React-TIL/tree/main/react-blog-app)
 
 > 고성능 대규모 프론트엔드 10개 프로젝트 - Course 1 (w/패스트캠퍼스)
 
